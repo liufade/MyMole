@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <include layout="@layout/layout_main_header"/>
+
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/mian_viewPager"/>
+
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        android:id="@+id/main_radiogroup">
+        <RadioButton
+            android:id="@+id/foot_bar_home"
+            style="@style/main_footer_bar_radio"
+            android:checked="true"
+            android:drawableTop="@drawable/home_s"
+            android:text="主页" />
+
+        <RadioButton
+            android:id="@+id/foot_bar_discover"
+            style="@style/main_footer_bar_radio"
+            android:drawableTop="@drawable/discover_s"
+            android:text="发现" />
+
+        <RadioButton
+            android:id="@+id/foot_bar_message"
+            style="@style/main_footer_bar_radio"
+            android:drawableTop="@drawable/message_s"
+            android:text="消息" />
+
+        <RadioButton
+            android:id="@+id/main_footbar_user"
+            style="@style/main_footer_bar_radio"
+            android:drawableTop="@drawable/user_s"
+            android:text="个人" />
+    </RadioGroup>
+</LinearLayout>
