@@ -1,9 +1,11 @@
 package com.example.computer.mymole.Resp.mianResp;
 
+import java.io.Serializable;
+
 /**
  * Created by computer on 2016/7/22.
  */
-public class BannerResp {
+public class BannerResp implements Serializable {
     /** 9*/private int action;
     /** 223196*/private int args;
     /** 一景一席谈，与你畅谈中外景点背后最有*/private String description;

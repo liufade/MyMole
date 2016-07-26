@@ -9,9 +9,6 @@ import android.widget.RadioGroup;
 
 import com.example.computer.mymole.Adapter.VpAdapter;
 import com.example.computer.mymole.Base.BaseFragment;
-import com.example.computer.mymole.UI.FindFragment;
-import com.example.computer.mymole.UI.MessageFragment;
-import com.example.computer.mymole.UI.PersonalFragment;
 import com.example.computer.mymole.UI.mainFragment;
 
 import java.util.ArrayList;
@@ -31,9 +28,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         main_radiogroup.setOnClickListener(this);
         fragments=new ArrayList<BaseFragment>();
         fragments.add(new mainFragment());
-        fragments.add(new FindFragment());
-        fragments.add(new MessageFragment());
-        fragments.add(new PersonalFragment());
+//        fragments.add(new FindFragment());
+//        fragments.add(new MessageFragment());
+//        fragments.add(new PersonalFragment());
         VpAdapter vpAdapter=new VpAdapter(getSupportFragmentManager(),fragments);
         mViewPager.setAdapter(vpAdapter);
 
