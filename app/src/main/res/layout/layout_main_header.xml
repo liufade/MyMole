@@ -26,8 +26,9 @@
         android:focusableInTouchMode="true"
         android:maxWidth="180dp"
         android:singleLine="true"
-        android:text="鼹鼠"
+        android:text="精选"
         android:textColor="@color/text_color_hint"
         android:textSize="@dimen/text_size_20" />
+
 
 </RelativeLayout>

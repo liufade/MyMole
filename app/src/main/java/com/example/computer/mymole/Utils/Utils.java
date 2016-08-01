@@ -23,23 +23,26 @@ public class Utils {
         ImageLoader.getInstance().displayImage(url, image, options, new ImageLoadingListener() {
             @Override
             public void onLoadingStarted(String imageUri, View view) {
-
+//                Log.d(TAG, "onLoadingStarted() called with: " + "imageUri = [" + imageUri + "], view = [" + view + "]");
             }
 
             @Override
             public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
-
+//                Log.d(TAG, "onLoadingFailed() called with: " + "imageUri = [" + imageUri + "], view = [" + view + "], failReason = [" + failReason + "]");
             }
 
             @Override
             public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
                 view.setTag(imageUri);
+//                Log.d(TAG, "onLoadingComplete() called with: " + "imageUri = [" + imageUri + "], view = [" + view + "], loadedImage = [" + loadedImage + "]");
             }
 
             @Override
             public void onLoadingCancelled(String imageUri, View view) {
-
+//                Log.d(TAG, "onLoadingCancelled() called with: " + "imageUri = [" + imageUri + "], view = [" + view + "]");
             }
         });
     }
+
+    private static final String TAG = "Utils";
 }

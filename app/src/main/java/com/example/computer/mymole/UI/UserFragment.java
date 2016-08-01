@@ -3,8 +3,7 @@ package com.example.computer.mymole.UI;
 import com.example.computer.mymole.Base.BaseFragment;
 
 /**
- * 个人页
+ * Created by computer on 2016/7/27.
  */
-public class PersonalFragment extends BaseFragment {
-
+public class UserFragment extends BaseFragment {
 }

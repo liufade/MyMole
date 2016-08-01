@@ -41,7 +41,7 @@
             android:text="消息" />
 
         <RadioButton
-            android:id="@+id/main_footbar_user"
+            android:id="@+id/foot_bar_user"
             style="@style/main_footer_bar_radio"
             android:drawableTop="@drawable/user_s"
             android:text="个人" />

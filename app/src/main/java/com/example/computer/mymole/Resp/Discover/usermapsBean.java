@@ -1,26 +1,28 @@
-package com.example.computer.mymole.Resp.mianResp;
+package com.example.computer.mymole.Resp.Discover;
 
 import java.io.Serializable;
 
 /**
- * Created by computer on 2016/7/22.
+ * Created by computer on 2016/7/27.
  */
-public class RecommendResp extends HomeJinXuanEntity implements Serializable{
-//    private String URL="http://image.xunjimap.com/image/";
-    /** 36*/private int attitudecount;
-    /** cms/story/441d5525-53c8-41c0-aaea-f8a4820daf62.jpg*/private String headurl;
-    /** cms/impress/b49a611d-945d-47b0-964b-ac3dac3b5669.png*/private String icon;
-    /** cms/topic/ea24c098-a2c0-40dd-8991-2d425a6db0e7.jpg*/private String imageurl;
-    /** 1*/private int isprivate;
+public class UsermapsBean implements Serializable{
+    /** 951*/private int attitudecount;
+    /** 1450627200000*/private long createdate;
+    /** 文章*/private String description;
+    /** cms/story/f5a9d4d6-6419-4d1e-9cab-0db8467a9339.jpg*/private String headurl;
+    /** cms/impress/3735a5ce-441b-47bb-a8c8-f33cb14580fc.png*/private String icon;
+    /** cms/impress/38703625-bd31-45c1-b716-6e6db7d23877.jpg*/private String imageurl;
+    /** 0*/private int isprivate;
     /** 其他*/private String label;
     /** 1*/private int status;
-    /** 15*/private int storycount;
-    /** 边陲小镇的真面目*/private String title;
-    /** 在广袤的天朝疆土上。。。*/private String topicDescription;
+    /** 9*/private int storycount;
+    /** 与袁腾飞游古战场*/private String title;
+    /** 1*/private int type;
+    /** 1456815357000*/private long updatedate;
     /** Array*/private String userInfos;
-    /** 35294*/private int userinfoid;
-    /** 205724*/private int usermapid;
-    /** 老人与海明威*/private String username;
+    /** 1*/private int userinfoid;
+    /** 205651*/private int usermapid;
+    /** 袁腾飞*/private String username;
 
     public int getAttitudecount() {
         return attitudecount;
@@ -28,6 +30,31 @@ public class RecommendResp extends HomeJinXuanEntity implements Serializable{
 
     public void setAttitudecount(int attitudecount) {
         this.attitudecount = attitudecount;
+    }
+
+
+    public long getCreatedate() {
+        return createdate;
+    }
+
+    public void setCreatedate(long createdate) {
+        this.createdate = createdate;
+    }
+
+    public long getUpdatedate() {
+        return updatedate;
+    }
+
+    public void setUpdatedate(long updatedate) {
+        this.updatedate = updatedate;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getHeadurl() {
@@ -94,20 +121,22 @@ public class RecommendResp extends HomeJinXuanEntity implements Serializable{
         this.title = title;
     }
 
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+
+
     public int getUserinfoid() {
         return userinfoid;
     }
 
     public void setUserinfoid(int userinfoid) {
         this.userinfoid = userinfoid;
-    }
-
-    public String getTopicDescription() {
-        return topicDescription;
-    }
-
-    public void setTopicDescription(String topicDescription) {
-        this.topicDescription = topicDescription;
     }
 
     public String getUserInfos() {
@@ -136,8 +165,10 @@ public class RecommendResp extends HomeJinXuanEntity implements Serializable{
 
     @Override
     public String toString() {
-        return "RecommendResp{" +
+        return "UsermapsBean{" +
                 "attitudecount=" + attitudecount +
+                ", createdate=" + createdate +
+                ", description='" + description + '\'' +
                 ", headurl='" + headurl + '\'' +
                 ", icon='" + icon + '\'' +
                 ", imageurl='" + imageurl + '\'' +
@@ -146,7 +177,8 @@ public class RecommendResp extends HomeJinXuanEntity implements Serializable{
                 ", status=" + status +
                 ", storycount=" + storycount +
                 ", title='" + title + '\'' +
-                ", topicDescription='" + topicDescription + '\'' +
+                ", type=" + type +
+                ", updatedate=" + updatedate +
                 ", userInfos='" + userInfos + '\'' +
                 ", userinfoid=" + userinfoid +
                 ", usermapid=" + usermapid +

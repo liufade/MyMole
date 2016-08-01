@@ -24,6 +24,7 @@ import com.example.computer.mymole.R;
 import com.example.computer.mymole.Resp.mianResp.BannerResp;
 import com.example.computer.mymole.Resp.mianResp.HomeJinXuanEntity;
 import com.example.computer.mymole.Resp.mianResp.HomeJinXuanResp;
+import com.example.computer.mymole.Resp.mianResp.RecommendResp;
 import com.example.computer.mymole.core.PMApplication;
 
 import java.util.ArrayList;
@@ -48,34 +49,40 @@ public class mainFragment extends BaseFragment {
     private Timer timer=new Timer();
     private List<BannerResp> bannerList;
     private ImageView[] mIndicator;
+    private List<RecommendResp> recommendRespList;
+    private RecommendResp[] recommend=new RecommendResp[]{};
 
     private int mBannerPosition = 0;
     private final int FAKE_BANNER_SIZE = 100;
     private final int DEFAULT_BANNER_SIZE = 5;
     private boolean mIsUserTouched = false;
 
-//    private TimerTask timerTask=new TimerTask() {
-//        @Override
-//        public void run() {
-//           if (!mIsUserTouched){
-//               mBannerPosition=(mBannerPosition+1)%FAKE_BANNER_SIZE;
-               /**
-                * android在子线程更新UI的几种方法
-                * Handler，AsyncTask,View.post,runOnUiThread
-                */
-//               View.post(new Runnable() {
-//                   @Override
-//                   public void run() {
-//                       if (mBannerPosition == FAKE_BANNER_SIZE - 1){
-//                           mViewPager.setCurrentItem(DEFAULT_BANNER_SIZE - 1,false);
-//                       }else {
-//                           mViewPager.setCurrentItem(mBannerPosition);
-//                       }
-//                   }
-//               });
-//           }
-//        }
-//    };
+//    private TimerTask timerTask;
+//
+//    {
+//        timerTask = new TimerTask() {
+//            @Override
+//            public void run() {
+//                if (!mIsUserTouched) {
+//                    mBannerPosition = (mBannerPosition + 1) % FAKE_BANNER_SIZE;
+//                    /**
+//                     * android在子线程更新UI的几种方法
+//                     * Handler，AsyncTask,View.post,runOnUiThread
+//                     */
+//                    runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            if (mBannerPosition == FAKE_BANNER_SIZE - 1) {
+//                                mViewPager.setCurrentItem(DEFAULT_BANNER_SIZE - 1, false);
+//                            } else {
+//                                mViewPager.setCurrentItem(mBannerPosition);
+//                            }
+//                        }
+//                    });
+//                }
+//            }
+//        };
+//    }
 
     @Nullable
     @Override
@@ -83,9 +90,6 @@ public class mainFragment extends BaseFragment {
             View view=View.inflate(getActivity(), R.layout.mian_fragment,null);
         mListView= (ListView) view.findViewById(R.id.main_fragment_listview);
         mViewPager= (ViewPager) view.findViewById(R.id.mian_fragment_viewPager);
-//        String[] userid = {"aa","bb","cc"};
-//        List<String> userList = new ArrayList<String>();
-//        Collections.addAll(userList, userid);
         mIndicator = new ImageView[]{
                 (ImageView) view.findViewById(R.id.dot_indicator1),
                 (ImageView) view.findViewById(R.id.dot_indicator2),
@@ -102,23 +106,32 @@ public class mainFragment extends BaseFragment {
 
     private void initData() {
         String url="http://service.xunjimap.com/xunjiservice/index?8240ED4B3DEE183E70F37F724F0169C6";
+
         StringRequest stringRequest=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+
                 Log.d(TAG, "onResponse: "+response);
                 HomeJinXuanResp hjxr= JSONObject.parseObject(response,HomeJinXuanResp.class);
                 mDatas=hjxr.getResult();
+                recommend=mDatas.getRecommendList();
+//                recommendRespList=new ArrayList<RecommendResp>();
+//                for (int i = 0; i <recommend.length ; i++) {
+//                    recommendRespList.add(recommend[i]);
+//                }
+
                 listViewAdapter=new mainListViewAdapter(getContext());
-                listViewAdapter.addAll(mDatas.getRecommendList() );
+                listViewAdapter.addAll(recommend);
                 mListView.setAdapter(listViewAdapter);
+
                 banner=mDatas.getBannerList();
                 Log.d(TAG, "banner: "+banner);
                 bannerList=new ArrayList<BannerResp>();
 //                Collections.addAll(bannerList,banner);
 //                ArrayList<String> array = new ArrayList<String>();
-                for(int i = 0;i < banner.length+1;i++){
+                for(int i = 0;i < banner.length;i++){
                     bannerList.add(banner[i]);
-                    Log.d(TAG, "bannerList: "+bannerList);
+//                    Log.d(TAG, "bannerList: "+bannerList);
                 }
 
                 imgAdapter=new ImgAdapter(getContext(),bannerList,mViewPager);
@@ -153,11 +166,6 @@ public class mainFragment extends BaseFragment {
         //dot
         //loadData
         initData();
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         //Touch
         mViewPager.setOnTouchListener(new View.OnTouchListener() {
             @Override
